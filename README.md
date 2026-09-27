@@ -1,0 +1,54 @@
+# 後室 3D 程序化生成探索 (Backrooms Procedural Explorer)
+
+一個純前端(HTML + Three.js)的後室風格 3D 探索專案。空間由隨機遊走(drunkard's walk)+ 房間雕刻演算法程序化生成,支援第一人稱行走、多種 Level 主題,並有會在空間中自主遊走(不具攻擊性)的實體。
+
+## 功能
+- 程序化生成無限可能的走廊 / 房間佈局(可調密度、房間數、種子重現特定地圖)
+- 第一人稱行走控制(WASD + 滑鼠視角,標準 FPS 操作邏輯)
+- 三種 Level 主題(不同配色、光源、天花板高度、空間手感)
+- 會在場景中隨機遊走的環境實體(僅作為氛圍存在,不與玩家互動或攻擊)
+- 使用 InstancedMesh 批次渲染牆體與燈具,並在重新生成地圖時正確釋放 GPU 資源,避免記憶體洩漏
+
+## 技術
+純前端,無需後端或建置流程。3D 引擎為 [Three.js](https://threejs.org/)(r128,透過 CDN 載入)。
+
+## 如何在本機執行
+直接用瀏覽器開啟 `index.html` 即可,或用任何靜態伺服器,例如:
+
+```bash
+python3 -m http.server 8000
+```
+
+再開啟 `http://localhost:8000`。
+
+## 部署到 GitHub Pages
+
+1. 在 GitHub 建立一個新的 repository(例如 `backrooms-explorer`)
+2. 把這個資料夾裡的 `index.html` 上傳到 repo 根目錄(可以直接在 GitHub 網頁上點 "Add file" → "Upload files" 拖曳上傳,不需要熟悉 git 指令)
+3. 進入 repo 的 **Settings → Pages**
+4. 在 "Build and deployment" 下,Source 選擇 **Deploy from a branch**,Branch 選擇 `main`,資料夾選 `/ (root)`,按 Save
+5. 等 1-2 分鐘,GitHub 會給你一個網址,格式類似:
+   `https://<你的帳號>.github.io/backrooms-explorer/`
+6. 打開這個網址就能直接玩,分享給教授只要傳這個連結即可
+
+### 用 git 指令部署(如果熟悉的話)
+```bash
+git init
+git add index.html README.md
+git commit -m "Backrooms procedural explorer"
+git branch -M main
+git remote add origin https://github.com/<你的帳號>/backrooms-explorer.git
+git push -u origin main
+```
+接著同樣去 Settings → Pages 設定即可。
+
+## 操作方式
+- `W` `A` `S` `D`:移動
+- 滑鼠:環顧視角
+- `ESC`:離開視角鎖定,回到選單
+- 選單中可調整複雜度、房間數、靈敏度、種子,並選擇不同 Level
+
+## 已知限制 / 可延伸方向
+- 目前碰撞為簡化的格子碰撞,未做精細的牆角滑動處理
+- 遊走實體使用簡單隨機遊走 AI,未做路徑規劃或與玩家互動邏輯
+- 可延伸:加入音效(環境嗡嗡聲、腳步聲)、小地圖、更多 Level、實體的簡單追蹤行為等
