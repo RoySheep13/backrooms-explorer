@@ -21,26 +21,6 @@ python3 -m http.server 8000
 
 再開啟 `http://localhost:8000`。
 
-## 部署到 GitHub Pages
-
-1. 在 GitHub 建立一個新的 repository(例如 `backrooms-explorer`)
-2. 把這個資料夾裡的 `index.html` 上傳到 repo 根目錄(可以直接在 GitHub 網頁上點 "Add file" → "Upload files" 拖曳上傳,不需要熟悉 git 指令)
-3. 進入 repo 的 **Settings → Pages**
-4. 在 "Build and deployment" 下,Source 選擇 **Deploy from a branch**,Branch 選擇 `main`,資料夾選 `/ (root)`,按 Save
-5. 等 1-2 分鐘,GitHub 會給你一個網址,格式類似:
-   `https://<你的帳號>.github.io/backrooms-explorer/`
-6. 打開這個網址就能直接玩,分享給教授只要傳這個連結即可
-
-### 用 git 指令部署(如果熟悉的話)
-```bash
-git init
-git add index.html README.md
-git commit -m "Backrooms procedural explorer"
-git branch -M main
-git remote add origin https://github.com/<你的帳號>/backrooms-explorer.git
-git push -u origin main
-```
-接著同樣去 Settings → Pages 設定即可。
 
 ## 操作方式
 - `W` `A` `S` `D`:移動
