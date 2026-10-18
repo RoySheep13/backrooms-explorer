@@ -2,6 +2,8 @@
 
 一個純前端(HTML + Three.js)的後室風格 3D 探索專案。空間由隨機遊走(drunkard's walk)+ 房間雕刻演算法程序化生成,支援第一人稱行走、多種 Level 主題,並有會在空間中自主遊走(不具攻擊性)的實體。
 
+遊戲連結:https://roysheep13.github.io/backrooms-explorer/
+
 ## 功能
 - 程序化生成無限可能的走廊 / 房間佈局(可調密度、房間數、種子重現特定地圖)
 - 第一人稱行走控制(WASD + 滑鼠視角,標準 FPS 操作邏輯)
